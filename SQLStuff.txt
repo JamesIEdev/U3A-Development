@@ -1,0 +1,89 @@
+Go to \app\Controller\UsersController.php
+
+Change:
+	$this->Auth->allow('login');
+
+To:
+	$this->Auth->allow('login', 'add');
+
+Add a member and user account through the site 
+(if you do it in PHPMyAdmin, the Hash Values won't match !!!)
+***** user must be added by manually entering the url: ***** http://ie.infotech.monash.edu/team19/Review/users/add
+***** or localhost:8080 or any web domain/Review/users/add
+
+Enter the database and change the 'role' value of the user to 'superuser'
+(this is so that there is only one superuser)
+
+Change:
+	$this->Auth->allow('login', 'add');
+
+To:
+	$this->Auth->allow('login');
+
+This is so that only member registration is allowed... a office volunteer then activates these accounts and manually create a user account for them (you can create volunteer with the superuser account and PHPMyAdmin)
+
+
+CREATE TABLE MEMBERS
+(
+  id INT NOT NULL AUTO_INCREMENT,
+  member_gname VARCHAR(20) NOT NULL,
+  member_mname VARCHAR(20) NULL,
+  member_fname VARCHAR(20) NOT NULL,
+  member_address VARCHAR(100) NOT NULL,
+  member_postcode INT(4) NOT NULL,
+  member_email VARCHAR(100) NOT NULL,
+  member_phone INT(10) NOT NULL,
+  member_mobile INT(10) NOT NULL,
+  active tinyint(1) NOT NULL DEFAULT '0',
+  CONSTRAINT member_PK PRIMARY KEY (id)
+);
+
+CREATE TABLE USERS (
+  id INT UNSIGNED AUTO_INCREMENT,
+  member_id INT NOT NULL,
+  username VARCHAR(128) NOT NULL,
+  password VARCHAR(128) NOT NULL,
+  email VARCHAR(128) NOT NULL,
+  role VARCHAR(64) NOT NULL,
+  created DATETIME DEFAULT NULL,
+  modified DATETIME DEFAULT NULL,
+  active tinyint(1) NOT NULL DEFAULT '1',
+  CONSTRAINT user_PK PRIMARY KEY (id),
+  CONSTRAINT user_FK1 FOREIGN KEY (member_id) REFERENCES MEMBERS(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE COURSES
+(
+  id INT NOT NULL AUTO_INCREMENT,
+  course_code VARCHAR(8) NOT NULL,
+  course_name VARCHAR(50) NULL,
+  description VARCHAR(200) NOT NULL,
+  max_enrol_limit INT(3) NOT NULL,
+  difficulty VARCHAR(20) NOT NULL,
+  prerequisites VARCHAR(100) NOT NULL,
+  CONSTRAINT course_PK PRIMARY KEY (id)
+);
+
+CREATE TABLE COURSEFILES
+(
+  id INT NOT NULL AUTO_INCREMENT,
+  course_id INT NOT NULL,
+  notes VARCHAR(100) NOT NULL,
+  attachments VARCHAR(100) NOT NULL,
+  CONSTRAINT coursefile_PK PRIMARY KEY (id),
+  CONSTRAINT coursefile_FK1 FOREIGN KEY (course_id) REFERENCES COURSES(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE COURSEENROLMENTS
+(
+  id INT NOT NULL AUTO_INCREMENT,
+  course_id INT NOT NULL,
+  member_id INT NOT NULL,
+  status VARCHAR(100) NOT NULL,
+  grade VARCHAR(3) NULL,
+  created DATETIME DEFAULT NULL,
+  modified DATETIME DEFAULT NULL,
+  CONSTRAINT courseenrolments_PK PRIMARY KEY (id),
+  CONSTRAINT courseenrolments_FK1 FOREIGN KEY (course_id) REFERENCES COURSES(id) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT courseenrolments_FK2 FOREIGN KEY (member_id) REFERENCES MEMBERS(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
