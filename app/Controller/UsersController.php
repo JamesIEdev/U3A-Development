@@ -164,49 +164,6 @@ class UsersController extends AppController {
         $this->Session->setFlash(__('User was not re-activated'));
         $this->redirect(array('action' => 'index'));
     }
-
-
-
-
-    public function reset_password($id = null) {
-        if (!$this->User->exists($id)) {
-            throw new NotFoundException(__('Invalid member'));
-        }
-
-        //Reset the password
-        $newPassword = randomPassword();
-        //Save new password to member
-        $this->User->id = $id;
-        $this->User->saveField('password',$newPassword);
-
-        //Send email for reset password
-        $Email = new CakeEmail();
-        //set template, find the email address of the memeber
-        $Email->template('forgotten_password', 'default')
-            ->emailFormat('html')
-            ->to($this->User->field('email'))
-            ->from('no-reply@u3a.org.au') 
-            ->viewVars(array('newPassword' => $newPassword))
-            ->send();
-
-
-
-        //Send email off
-        $this->Session->setFlash('Your password has been reset and sent you to your email address');
-        $this->redirect($this->referer());
-    }
-
-
-    function randomPassword() {
-        $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
-        $pass = array(); //remember to declare $pass as an array
-        $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
-        for ($i = 0; $i < 8; $i++) {
-            $n = rand(0, $alphaLength);
-            $pass[] = $alphabet[$n];
-        }
-        return implode($pass); //turn the array into a string
-    }
 }
 
 ?>
