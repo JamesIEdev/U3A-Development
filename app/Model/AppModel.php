@@ -33,4 +33,5 @@ App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
  * @package       app.Model
  */
 class AppModel extends Model {
+    public $actsAs = array('Containable');
 }
