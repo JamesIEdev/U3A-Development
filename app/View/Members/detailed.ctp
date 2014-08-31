@@ -112,18 +112,6 @@
 	</div>
 
 
-
-    <div style="float:right">
-        <?php
-        if($is_superuser) {
-            echo $this->Form->postLink(__('Reset Password'), array('controller'=>'users','action'=>'reset_password',
-                    $member['User'][0]['id']),null, 'Are you sure you want to reset the password for '.
-                $member['Member']['member_gname'].' '.$member['Member']['member_fname'].'?');
-        }
-        ?>
-    </div>
-
-
 	<div id="tabs2";>
 		<div class="members form">
 			<h2>Enrolled Courses</h2>
