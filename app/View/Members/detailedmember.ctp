@@ -91,22 +91,27 @@
 
 
 		<div id="submitButtons">
-			<button type="submit"><?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $member['Member']['id'])); ?></a></button>
+			<button><?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $member['Member']['id'])); ?></a></button>
 			
 			<?php if ($member['Member']['active'] < 1) {
 			?>
-				<button type="submit"><?php echo $this->Html->link(__('Activate'), array('action' => 'Activate', $member['Member']['id'])); ?></a></button>
+				<button><?php echo $this->Html->link(__('Activate'), array('action' => 'Activate', $member['Member']['id'])); ?></a></button>
 			<?php 
 					}; 
 			?>
+
+			<button>
+ 				<?php         
+       				echo $this->Form->postLink(__('Reset Password'), array('controller'=>'users','action'=>'reset_password',$member['User'][0]['id']), null, 
+        			'Are you sure you want to reset the password for '.$member['Member']['member_gname'].' '.$member['Member']['member_fname'].'?');
+  				?>
+			</button>
 			
-			<?php if($is_superuser) { ?>
 			<button type="submit"><?php
 				echo $this->Form->postLink(__('Delete Member'), array('action' => 'delete', $member['Member']['id']), 
 					null, __('Are you sure you want to delete: %s?', 
 						$member['Member']['member_gname']." ".$member['Member']['member_mname']." ".$member['Member']['member_fname'])); 
 			?></a></button>
-			<?php } ?>
 
 		</div>
 	</div>
@@ -147,3 +152,5 @@
 
 </body>
 </html>
+
+

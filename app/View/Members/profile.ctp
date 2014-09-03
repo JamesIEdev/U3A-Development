@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-	<link rel="stylesheet" href="/resources/demos/style.css">
 	<script>
 	$(function() {
 		$("#tabs").tabs();
@@ -17,14 +16,14 @@
 			<ul>
 				<li><a href="#tabs1">Details</a></li>
 				<li><a href="#tabs2">Enrollments</a></li>
-				<li><a href="#tabs3"><?php echo $this->Html->link(__('Go Back'), array('action' => 'index')); ?></a></li>
+				<li class="tabhide"><a href="#tabs3">hide</a></li>
 				
 			</ul>
 
 			<div id="tabs1";>
 				<div class="members index">
 					<h2>
-						<?php echo __('Profile'); ?>
+						<?php echo __('My Profile'); ?>
 					</h2>
 
 					<table width="80%"> 
@@ -71,26 +70,9 @@
 					</table>
 				</div>
 
-				<h2>Account Details</h2>
-				<?php if (!empty($member['User'])): ?>
-				
-				<table cellpadding = "0" cellspacing = "0">
-					<?php foreach ($member['User'] as $user): ?>
-					<tr>
-						<td class="heading" width="20%">ID:</td> 
-						<td class="data"><?php echo $user['id']; ?></td> 
-					</tr>
-					<tr>
-						<td class="heading" width="20%">Email:</td> 
-						<td class="data"><?php echo $user['email']; ?></td> 
-					</tr>
-				<?php endforeach; ?>
-			<?php endif; ?>				
-		</table>
-
 
 		<div id="submitButtons">
-			<button type="submit"><?php echo $this->Html->link(__('Edit Profile'), array('action' => 'edit_profile', $member['Member']['id'])); ?></a></button>
+			<button type="submit"><?php echo $this->Html->link(__('Edit Profile'), array('action' => 'edit', $member['Member']['id'])); ?></a></button>
 		</div>
 	</div>
 

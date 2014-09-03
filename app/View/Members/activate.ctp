@@ -1,9 +1,8 @@
 
-
 <div class="members view">
 	<?php echo $this->Form->create('Member', array('inputDefaults' => array('label' => false))); ?>
 
-<h2><?php echo __('Active Member'); ?></h2>
+<h2><?php echo __('Activate Member'); ?></h2>
 
 <table width="80%"> 
 <tr> 
@@ -63,8 +62,8 @@
 	?>
 
 	<div id="submitButtons">
-		<button type="submit">Confirm Activate<?php echo $this->Form->end(); ?></button>
-		<button><?php echo $this->Html->link(__('Go Back'), array('action' => 'detailed/'. $member['Member']['id'])); ?></button>
+		<button type="submit">Confirm Activation<?php echo $this->Form->end(); ?></button>
+		<button><?php echo $this->Html->link(__('Go Back'), array('action' => 'detailedmember/'. $member['Member']['id'])); ?></button>
 	</div>
 </div>
 

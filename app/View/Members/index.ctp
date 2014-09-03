@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>jQuery UI Tabs - Default functionality</title>
 	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-
 	<script> $(function() {
 		$("#tabs").tabs();
 	});	
 	</script>
 </head>
+
 
 <body>
 	<p></p>
@@ -39,7 +38,7 @@
 						<tbody>
 							<?php foreach ($members as $member):  {?>
 							<tr>
-								<td><?php echo $this->Html->link((h($member['Member']['member_gname'])), array('action' => 'detailed', $member['Member']['id'])); ?>&nbsp;</td>
+								<td><?php echo $this->Html->link((h($member['Member']['member_gname'])), array('action' => 'detailedmember', $member['Member']['id'])); ?>&nbsp;</td>
 								<td><?php echo h($member['Member']['member_fname']); ?>&nbsp;</td>
 								<td><?php echo h($member['Member']['member_address']); ?>&nbsp;</td>
 								<td><?php echo h($member['Member']['member_email']); ?>&nbsp;</td>
@@ -73,7 +72,7 @@
 							if ($member['Member']['active'] > 0) {
 								?>
 								<tr>
-									<td><?php echo $this->Html->link((h($member['Member']['member_gname'])), array('action' => 'detailed', $member['Member']['id'])); ?>&nbsp;</td>
+									<td><?php echo $this->Html->link((h($member['Member']['member_gname'])), array('action' => 'detailedmember', $member['Member']['id'])); ?>&nbsp;</td>
 									<td><?php echo h($member['Member']['member_fname']); ?>&nbsp;</td>
 									<td><?php echo h($member['Member']['member_address']); ?>&nbsp;</td>
 									<td><?php echo h($member['Member']['member_email']); ?>&nbsp;</td>
@@ -108,7 +107,7 @@
 								if ($member['Member']['active'] < 1) {
 							?>
 									<tr>
-										<td><?php echo $this->Html->link((h($member['Member']['member_gname'])), array('action' => 'detailed', $member['Member']['id'])); ?>&nbsp;</td>
+										<td><?php echo $this->Html->link((h($member['Member']['member_gname'])), array('action' => 'detailedmember', $member['Member']['id'])); ?>&nbsp;</td>
 										<td><?php echo h($member['Member']['member_fname']); ?>&nbsp;</td>
 										<td><?php echo h($member['Member']['member_address']); ?>&nbsp;</td>
 										<td><?php echo h($member['Member']['member_email']); ?>&nbsp;</td>

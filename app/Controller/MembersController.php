@@ -1,10 +1,9 @@
 <?php
-App::uses('AppController', 'Controller');
 /**
  * Members Controller
- *
- * @property Member $Member
  */
+App::uses('AppController', 'Controller');
+
 class MembersController extends AppController {
 
     public function beforeFilter() {
@@ -97,7 +96,7 @@ class MembersController extends AppController {
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Member->save($this->request->data)) {
 				$this->Session->setFlash(__('The member has been activated'));
-				$this->redirect(array('action' => 'detailed/'. $id));
+				$this->redirect(array('action' => 'detailedmember/'. $id));
 			} else {
 				$this->Session->setFlash(__('The member could not be activated. Please, try again.'));
 			}
@@ -116,7 +115,7 @@ class MembersController extends AppController {
  * @param string $id
  * @return void
  */
-	public function detailed($id = null) {
+	public function detailedmember($id = null) {
 		if (!$this->Member->exists($id)) {
 			throw new NotFoundException(__('Invalid member'));
 		}
@@ -185,7 +184,15 @@ class MembersController extends AppController {
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Member->save($this->request->data)) {
 				$this->Session->setFlash(__('Member updated!'));
-				$this->redirect(array('action' => 'detailed/' . $id));
+				$getuser = $this->Session->read('Auth.User');
+
+				if ($id == $getuser['member_id']) {
+					$this->redirect(array('action' => 'profile/' . $id));
+				}
+				else {
+					$this->redirect(array('action' => 'detailedmember/' . $id));
+				}
+
 			} else {
 				$this->Session->setFlash(__('The member could not be saved. Please, try again.'));
 			}
@@ -219,35 +226,6 @@ class MembersController extends AppController {
 		$this->redirect(array('action' => 'index'));
 	}
 
-
-/**
- * edit member profile method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function edit_profile($id = null) {
-		if (!$this->Member->exists($id)) {
-			throw new NotFoundException(__('Invalid member'));
-		}
-		
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->Member->save($this->request->data)) {
-				$this->Session->setFlash(__('Member updated!'));
-				$this->redirect(array('action' => 'view_profile/' . $id));
-			} else {
-				$this->Session->setFlash(__('The member could not be saved. Please, try again.'));
-			}
-
-		} else {
-			$options = array('conditions' => array('Member.' . $this->Member->primaryKey => $id));
-			$this->request->data = $this->Member->find('first', $options);
-		}
-		$this->set('member', $this->Member->find('first', $options));
-	}
-
-
 	/**
  * view member profile method
  *
@@ -255,7 +233,7 @@ class MembersController extends AppController {
  * @param string $id
  * @return void
  */
-	public function view_profile($id = null) {
+	public function profile($id = null) {
 		if (!$this->Member->exists($id)) {
 			throw new NotFoundException(__('Invalid member'));
 		}

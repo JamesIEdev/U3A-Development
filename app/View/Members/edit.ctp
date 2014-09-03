@@ -4,8 +4,19 @@
 	echo $this->Form->create('Member', array('enctype' => 'multipart/form-data')); 
 	echo $this->Form->input('id'); 
 	?>
+	
 
-	<h2><?php echo __('Edit Member'); ?></h2>
+	<h2><?php 
+	 	$getuser = $this->Session->read('Auth.User'); 
+		if ($member['Member']['id'] == $getuser['member_id']) {
+			echo __('Edit Profile');
+		}
+		else {
+			echo __('Edit Details');
+		}	
+	?></h2>
+
+	
 
 	<table cellpadding='0' cellspacing='1' width='100%'>
 		<tr> 
@@ -51,8 +62,19 @@
 	</table>
 
 
-	<div id="submitButtons">
-		<button type="Submit">Confirm Edit<?php echo $this->Form->end(); ?></button>
-		<button><?php echo $this->Html->link('Go Back', array('controller' => 'members', 'action' => 'detailed/' . $member['Member']['id']));?></button>
+
+
+<div id="submitButtons">
+	<button type="Submit">Confirm Edit<?php echo $this->Form->end(); ?></button>
+		<?php 
+		if ($member['Member']['id'] == $getuser['member_id']) { ?>
+			<button><?php echo $this->Html->link('Go Back', array('controller' => 'members', 'action' => 'Profile/' . $getuser['Member']['id']));?></button>
+		<?php } else { ?>
+			<button><?php echo $this->Html->link('Go Back', array('controller' => 'members', 'action' => 'detailedmember/' . $member['Member']['id']));?></button>
+		<?php } ?>
+		
 	</div>
 </div>
+
+
+	

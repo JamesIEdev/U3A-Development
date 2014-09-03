@@ -1,5 +1,4 @@
-﻿
-html, body
+﻿html, body
 {
 	height: auto;
 }
@@ -1114,6 +1113,11 @@ table tr td.activate {
 
 #tabs li:last-child {
 	float:right;
+}
+
+.tabhide {
+	visibility: hidden;
+	display: none;
 }
 
 #tabs li a {

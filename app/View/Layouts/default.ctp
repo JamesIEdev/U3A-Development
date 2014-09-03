@@ -7,13 +7,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="" />
     <meta name="description" content="" />
-    <?php echo $this->Html->css('jquery.dataTables');?>
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+    <?php echo $this->Html->css('jquery.dataTables');?>
     <?php echo $this->Html->css('u3a');?>
     <?php echo $this->Html->css('fonts');?>
-    
     <?php echo $this->Html->script('jquery-1.10.2');?>
-    <?php echo $this->Html->script('jquery.slidertron-1.3');?>
     <?php echo $this->Html->script('jquery.dataTables');?>
     <?php echo $this->Html->script('runtable');?>
     
@@ -31,8 +29,8 @@
   <?php if($this->Session->check('Auth.User')){ ?>
 
   <ul>
-    <li><?php echo $this->Html->link('HOMEPAGE', '/'); ?> </li>
-    <li><?php echo $this->Html->link('PROFILE', array('controller' => 'members', 'action' => 'view_profile', $user['member_id'])); ?></li>
+    <li><?php echo $this->Html->link('HOME', '/'); ?> </li>
+    <li><?php echo $this->Html->link('MY PROFILE', array('controller' => 'members', 'action' => 'profile', $user['member_id'])); ?></li>
     <li><?php echo $this->Html->link('MEMBERS', array('controller' => 'members', 'action' => 'index')); ?></li>
     <li><?php echo $this->Html->link('COURSES', array('controller' => 'courses', 'action' => 'index')); ?></li>
 	<li><?php echo $this->Html->link('ENROL', array('controller' => 'courseenrolments', 'action' => 'index')); ?></li>

@@ -1,4 +1,6 @@
 <?php
+App::uses('AppController', 'Controller');
+App::uses('CakeEmail', 'Network/Email');
 
 class UsersController extends AppController {
 
@@ -163,6 +165,48 @@ class UsersController extends AppController {
         }
         $this->Session->setFlash(__('User was not re-activated'));
         $this->redirect(array('action' => 'index'));
+    }
+
+
+    function randomPassword() {
+        $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
+        $pass = array();
+        $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+        for ($i = 0; $i < 8; $i++) {
+            $n = rand(0, $alphaLength);
+            $pass[] = $alphabet[$n];
+        }
+        return implode($pass); //turn the array into a string
+    }
+
+    public function reset_password($id = null) {
+        if (!$this->User->exists($id)) {
+            throw new NotFoundException(__('Invalid member'));
+        }
+
+        //Reset the password
+        $newPassword = $this->randomPassword();
+        //Save new password to member
+        $this->User->id = $id;
+        $this->User->saveField('password',$newPassword);
+
+        //Send email for reset password
+        $Email = new CakeEmail('monashSMTP');
+        //set template, find the email address of the memeber
+        $Email->template('forgotten_password', 'default')
+            ->emailFormat('html')
+            ->to($this->User->field('email')) //email address is set to the new user
+            ->from(array('no-reply@u3a.org.au'=>'U3A University'))
+            ->viewVars(array('newPassword' => $newPassword))
+            ->send();
+
+
+
+
+
+        //Send email off
+        $this->Session->setFlash('Your password has been reset and sent you to your email address');
+        $this->redirect($this->referer());
     }
 }
 
