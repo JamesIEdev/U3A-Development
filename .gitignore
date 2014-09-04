@@ -47,3 +47,4 @@ app/View/.DS_Store
 .DS_Store
 app/.DS_Store
 lib/.DS_Store
+app/View/Layouts/Emails/html/default.ctp
