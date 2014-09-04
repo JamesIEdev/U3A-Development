@@ -155,7 +155,6 @@ class MembersController extends AppController {
 	public function add_account() {
 		$this->set('members', $this->paginate());
 		if ($this->request->is('post')) {
-			debug($this->data);
 			$this->Member->User->create();
 			if ($this->Member->User->saveAssociated($this->request->data, array('atomic' => false, 'deep' => true))) {
 				$this->Session->setFlash(__('The user has been saved'));
