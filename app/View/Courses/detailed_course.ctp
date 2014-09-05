@@ -22,7 +22,7 @@
 
 			<div id="tabs1";>
 				<div class="courses view">
-				<h2><?php  echo __('Course'); ?></h2>
+				<h2><?php echo $course['Course']['course_code']." - ".$course['Course']['course_name'] ?></h2>
 					<table width="80%"> 
 						<tr> 
 							<td class="heading" width="20%">ID:</td> 
@@ -74,7 +74,7 @@
 
 	<div id="tabs2";>
 		<div class="courses form">
-			<h2><?php echo $course['Course']['course_code']." - ".$course['Course']['course_name'] ?></h2>
+			<h2><?php echo "Members enrolled under: ".$course['Course']['course_code']." - ".$course['Course']['course_name'] ?></h2>
 			<table id="table_id3" cellpadding="0" cellspacing="0">
 				<thead>
 					<tr>
