@@ -24,7 +24,7 @@ class CoursesController extends AppController {
  * @param string $id
  * @return void
  */
-	public function view($id = null) {
+	public function detailed_course($id = null) {
 		if (!$this->Course->exists($id)) {
 			throw new NotFoundException(__('Invalid course'));
 		}
@@ -55,6 +55,22 @@ class CoursesController extends AppController {
 				$this->Session->setFlash(__('The course could not be saved. Please, try again.'));
 			}
 		}
+	}
+
+	public function enrol_now() {
+		if ($this->request->is('post')) {
+			$this->Course->Courseenrolment->create();
+			if ($this->Course->Courseenrolment->saveAssociated($this->request->data, array('atomic' => false, 'deep' => true))) {
+				$this->Session->setFlash(__('The Course Enrolment has been saved'));
+				$this->redirect(array('action' => 'index'));
+			} 
+			else {
+				$this->Session->setFlash(__('ERROR'));
+			}
+		}
+		$courses = $this->Course->Courseenrolment->Course->find('list');
+		$members = $this->Course->Courseenrolment->Member->find('list');
+		$this->set(compact('courses', 'courseenrolments'));
 	}
 
 /**

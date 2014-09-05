@@ -1,4 +1,3 @@
-
 <div class="members_form">
 	<?php 
 		echo $this->Form->create('Member', array('enctype' => 'multipart/form-data', 'novalidate' => true)); 
@@ -47,8 +46,7 @@
 			<td class="heading">Role: </td> 
 			<td class="data"><?php echo $this->Form->input('User.role', 
 			   	array('label' =>'', 
-			   		  'options' => array('member' => 'Member', 'teachingstaff' => 'Teaching Staff', 'officevolunteer' => 'Office Volunteer'),
-			   		  'value' => 'member'));?>
+			   		  'options' => array('member' => 'Member', 'teachingstaff' => 'Teaching Staff', 'officevolunteer' => 'Office Volunteer'), 'value' => 'member'));?>
 			</td> 
 		</tr>
 	</table>
