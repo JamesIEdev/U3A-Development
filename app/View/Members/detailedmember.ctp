@@ -73,22 +73,20 @@
 				</div>
 
 				<h2>Related Accounts</h2>
-				<?php if (!empty($member['User'])): ?>
-				
-				<table cellpadding = "0" cellspacing = "0">
-					<?php foreach ($member['User'] as $user): ?>
-					<tr>
-						<td class="heading" width="20%">ID:</td> 
-						<td class="data"><?php echo $user['id']; ?></td> 
-					</tr>
-					<tr>
-						<td class="heading" width="20%">Email:</td> 
-						<td class="data"><?php echo $user['email']; ?></td> 
-					</tr>
-				<?php endforeach; ?>
-			<?php endif; ?>				
-		</table>
-
+				<?php if (!empty($member['User'])): ?>			
+					<table cellpadding = "0" cellspacing = "0">
+						<?php foreach ($member['User'] as $user): ?>
+							<tr>
+								<td class="heading" width="20%">ID:</td> 
+								<td class="data"><?php echo $user['id']; ?></td> 
+							</tr>
+							<tr>
+								<td class="heading" width="20%">Email:</td> 
+								<td class="data"><?php echo $user['email']; ?></td> 
+							</tr>
+						<?php endforeach; ?>
+					<?php endif; ?>				
+				</table>
 
 		<div id="submitButtons">
 			<button><?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $member['Member']['id'])); ?></a></button>
@@ -140,16 +138,13 @@
 						<td><?php echo $course['difficulty']; ?></td>
 						<td><?php echo $course['prerequisites']; ?></td>
 					</tr>
-
+					<?php endforeach; ?>
 				</tbody>
-			<?php endforeach; ?>
-		</table>
+			</table>
+		</div>
+	</div>
 </div>
 </div>
-
-</div>
-</div>
-
 </body>
 </html>
 

@@ -1,11 +1,10 @@
 
 <div class="members_form">
 	<?php 
-	echo $this->Form->create('Member', array('enctype' => 'multipart/form-data')); 
-	echo $this->Form->input('id'); 
+		echo $this->Form->create('Member', array('enctype' => 'multipart/form-data')); 
+		echo $this->Form->input('id'); 
 	?>
 	
-
 	<h2><?php 
 	 	$getuser = $this->Session->read('Auth.User'); 
 		if ($member['Member']['id'] == $getuser['member_id']) {
@@ -15,8 +14,6 @@
 			echo __('Edit Details');
 		}	
 	?></h2>
-
-	
 
 	<table cellpadding='0' cellspacing='1' width='100%'>
 		<tr> 
