@@ -85,8 +85,7 @@
 					<tr>
 						<th><?php echo __('Course Code'); ?></th>
 						<th><?php echo __('Course Name'); ?></th>
-						<th><?php echo __('Description'); ?></th>
-						<th><?php echo __('Max Enrol Limit'); ?></th>
+						<th><?php echo __('Enrollments'); ?></th>
 						<th><?php echo __('Difficulty'); ?></th>
 						<th><?php echo __('Prerequisites'); ?></th>
 					</tr>
@@ -99,8 +98,7 @@
 								array('controller' => 'Courses', 'action' => 'detailed_course', $course['id'])); ?>
 						</td>
 						<td><?php echo $course['course_name']; ?></td>
-						<td><?php echo $course['description']; ?></td>
-						<td><?php echo $course['max_enrol_limit']; ?></td>
+						<td><?php echo h($course['current_enrolled']); ?>&nbsp;/&nbsp;<?php echo h($course['max_enrol_limit']); ?></td>
 						<td><?php echo $course['difficulty']; ?></td>
 						<td><?php echo $course['prerequisites']; ?></td>
 					</tr>

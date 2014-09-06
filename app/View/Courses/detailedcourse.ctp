@@ -16,7 +16,7 @@
 			<ul>
 				<li><a href="#tabs1">Details</a></li>
 				<li><a href="#tabs2">List Members</a></li>
-				<li><a href="#tabs3"><?php echo $this->Html->link(__('Go Back'), array('action' => 'index')); ?></a></li>
+				<li><a href="#tabs3"><?php echo $this->Html->link(__('Courses'), array('action' => 'index')); ?></a></li>
 				
 			</ul>
 
@@ -41,8 +41,8 @@
 							<td class="data"><?php echo h($course['Course']['description']); ?></td> 
 						</tr> 
 						<tr> 
-							<td class="heading" width="20%">Max Enrol Limit:</td> 
-							<td class="data"><?php echo h($course['Course']['max_enrol_limit']); ?></td> 
+							<td class="heading" width="20%">Currently Enrolled:</td> 
+							<td class="data"><?php echo h($course['Course']['current_enrolled']); ?>&nbsp;/&nbsp;<?php echo h($course['Course']['max_enrol_limit']); ?></td> 
 						</tr> 
 						<tr> 
 							<td class="heading" width="20%">Difficulty:</td> 
@@ -116,7 +116,6 @@
 		</div>
 		</div>
 	</div>
-</div>
 </div>
 </body>
 </html>

@@ -25,21 +25,19 @@
 					<table  id="table_id1" cellpadding="0" cellspacing="0">
 						<thead>
 						<tr>
-							<th><?php echo $this->Paginator->sort('course_code'); ?></th>
-							<th><?php echo $this->Paginator->sort('course_name'); ?></th>
-							<th><?php echo $this->Paginator->sort('description'); ?></th>
-							<th><?php echo $this->Paginator->sort('max_enrol_limit'); ?></th>
-							<th><?php echo $this->Paginator->sort('difficulty'); ?></th>
-							<th><?php echo $this->Paginator->sort('prerequisites'); ?></th>
+								<th>Course Code</th>
+								<th>Course Name</th>
+								<th>Enrolled</th>
+								<th>Difficutly</th>
+								<th>Prerequisites</th>
 						</tr>
 					</thead>
 						<?php foreach ($courses as $course): ?>
 						<tbody>
 						<tr>
-							<td><?php echo $this->Html->link((h($course['Course']['course_code'])), array('action' => 'detailed_course', $course['Course']['id'])); ?>&nbsp;</td>
+							<td><?php echo $this->Html->link((h($course['Course']['course_code'])), array('action' => 'detailedcourse', $course['Course']['id'])); ?>&nbsp;</td>
 							<td><?php echo h($course['Course']['course_name']); ?>&nbsp;</td>
-							<td><?php echo h($course['Course']['description']); ?>&nbsp;</td>
-							<td><?php echo h($course['Course']['max_enrol_limit']); ?>&nbsp;</td>
+							<td><?php echo h($course['Course']['current_enrolled']); ?>&nbsp;/&nbsp;<?php echo h($course['Course']['max_enrol_limit']); ?>&nbsp;</td>
 							<td><?php echo h($course['Course']['difficulty']); ?>&nbsp;</td>
 							<td><?php echo h($course['Course']['prerequisites']); ?>&nbsp;</td>
 						</tr>
@@ -64,11 +62,11 @@
 						</tr> 
 						<tr> 
 							<td class="heading">Course Name: </td> 
-							<td class="data"><?php echo $this->Form->input('course_name', array('label' =>'','size'=>'30'));?></td> 
+							<td class="data"><?php echo $this->Form->input('course_name', array('label' =>'','size'=>'100'));?></td> 
 						</tr> 
 						<tr> 
 							<td class="heading">Description: </td> 
-							<td class="data"><?php echo $this->Form->input('description', array('label' =>'','size'=>'30'));?></td> 
+							<td class="data"><?php echo $this->Form->input('description', array('label' =>'','size'=>'100'));?></td> 
 						</tr>
 						<tr> 
 							<td class="heading">Max Enrol Limit: </td> 

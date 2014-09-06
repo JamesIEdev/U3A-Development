@@ -24,7 +24,7 @@ class CoursesController extends AppController {
  * @param string $id
  * @return void
  */
-	public function detailed_course($id = null) {
+	public function detailedcourse($id = null) {
 		if (!$this->Course->exists($id)) {
 			throw new NotFoundException(__('Invalid course'));
 		}

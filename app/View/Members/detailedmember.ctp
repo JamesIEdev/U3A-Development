@@ -16,7 +16,7 @@
 			<ul>
 				<li><a href="#tabs1">Details</a></li>
 				<li><a href="#tabs2">Enrollments</a></li>
-				<li><a href="#tabs3"><?php echo $this->Html->link(__('Go Back'), array('action' => 'index')); ?></a></li>
+				<li><a href="#tabs3"><?php echo $this->Html->link(__('Members'), array('action' => 'index')); ?></a></li>
 				
 			</ul>
 
@@ -72,22 +72,6 @@
 					</table>
 				</div>
 
-				<h2>Related Accounts</h2>
-				<?php if (!empty($member['User'])): ?>			
-					<table cellpadding = "0" cellspacing = "0">
-						<?php foreach ($member['User'] as $user): ?>
-							<tr>
-								<td class="heading" width="20%">ID:</td> 
-								<td class="data"><?php echo $user['id']; ?></td> 
-							</tr>
-							<tr>
-								<td class="heading" width="20%">Email:</td> 
-								<td class="data"><?php echo $user['email']; ?></td> 
-							</tr>
-						<?php endforeach; ?>
-					<?php endif; ?>				
-				</table>
-
 		<div id="submitButtons">
 			<button><?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $member['Member']['id'])); ?></a></button>
 			
@@ -122,8 +106,7 @@
 					<tr>
 						<th>Course Code</th>
 						<th>Course Name</th>
-						<th>Description</th>
-						<th>Max Enrol Limit</th>
+						<th>Enrolled</th>
 						<th>Difficulty</th>
 						<th>Prerequisites</th>
 					</tr>
@@ -133,11 +116,10 @@
 					<tr>
 						<td>
 							<?php echo $this->Html->link((h($course['course_code'])), 
-								array('controller' => 'Courses', 'action' => 'detailed_course', $course['id'])); ?>
+								array('controller' => 'Courses', 'action' => 'detailedcourse', $course['id'])); ?>
 						</td>
 						<td><?php echo $course['course_name']; ?></td>
-						<td><?php echo $course['description']; ?></td>
-						<td><?php echo $course['max_enrol_limit']; ?></td>
+						<td><?php echo h($course['current_enrolled']); ?>&nbsp;/&nbsp;<?php echo h($course['max_enrol_limit']); ?></td>
 						<td><?php echo $course['difficulty']; ?></td>
 						<td><?php echo $course['prerequisites']; ?></td>
 					</tr>
