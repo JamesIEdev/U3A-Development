@@ -94,7 +94,10 @@
 				<tbody>
 					<?php foreach ($member['Course'] as $course): ?>
 					<tr>
-						<td><?php echo $course['course_code']; ?></td>
+						<td>
+							<?php echo $this->Html->link((h($course['course_code'])), 
+								array('controller' => 'Courses', 'action' => 'detailed_course', $course['id'])); ?>
+						</td>
 						<td><?php echo $course['course_name']; ?></td>
 						<td><?php echo $course['description']; ?></td>
 						<td><?php echo $course['max_enrol_limit']; ?></td>

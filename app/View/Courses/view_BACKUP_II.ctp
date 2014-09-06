@@ -71,11 +71,10 @@
 
 	<div id="tabs2";>
 		<div class="courses form">
-			<h2>Enrolled Courses</h2>
+			<h2><?php echo $course['Course']['course_code']." - ".$course['Course']['course_name'] ?></h2>
 			<table id="table_id3" cellpadding="0" cellspacing="0">
 				<thead>
 					<tr>
-						<th>Course Name</th>
 						<th>Member Name</th>
 						<th>Status</th>
 						<th>Grade</th>
@@ -90,9 +89,6 @@
 						if ($member['course_id'] == $course['Course']['id']) {
 					?>
 					<tr>
-						<td>
-							<?php echo $this->Html->link($member['course_id'], array('controller' => 'courses', 'action' => 'view', $member['course_id'])); ?>
-						</td>
 						<td>
 							<?php echo $this->Html->link($member['member_id'], array('controller' => 'members', 'action' => 'view', $member['member_id'])); ?>
 						</td>
