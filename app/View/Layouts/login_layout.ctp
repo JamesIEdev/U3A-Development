@@ -27,8 +27,8 @@
 </div>
 
      <div id="featured-wrapper" class="container">
-        <div id="login" class="container" align ='center'>
-            <?php echo $this->Session->flash(); echo$content_for_layout; ?>
+        <div id="login" class="container" align='center'>
+            <?php echo $this->Session->flash(); echo $content_for_layout; ?>
         </div>
      </div>
 
@@ -38,6 +38,6 @@
         </div>
 </div>
 
-</shadowcont>
+</div>
 </body>
 </html>

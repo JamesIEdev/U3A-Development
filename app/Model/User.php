@@ -1,5 +1,6 @@
 <?php
 App::uses('AuthComponent', 'Controller/Component');
+App::uses('CakeTime', 'Utility');
 
 class User extends AppModel {
     
@@ -179,14 +180,14 @@ class User extends AppModel {
             ");
         } else {
             $this->query("
-                UPDATE `token_hash` SET `hash` = ".$token." WHERE `User_id` = ".$id.";
-                UPDATE `token_hash` SET `datetime` = ".date('Y-m-d H:i:s')." WHERE `User_id` = ".$id.";
+                UPDATE `token_hash` SET `hash` = '".$token."' WHERE `User_id` = ".$id.";
+                UPDATE `token_hash` SET `datetime` = '".date('Y-m-d H:i:s')."' WHERE `User_id` = ".$id.";
             ");
         }
     }
 
     public function findTokenUserID($token){
-        $currentToken = $this->query("SELECT * FROM `token_hash` WHERE `hash` = ".$token.";");
+        $currentToken = $this->query("SELECT * FROM `token_hash` WHERE `hash` = '".$token."';");
 
         if(empty($currentToken)){
             return null;
@@ -194,12 +195,12 @@ class User extends AppModel {
             //Check to see how old the hash is
             //Time is set to 30 minutes
 
-            $time = 30;
-            if(CakeTime::isPast($currentToken[0]['datetime'])){
-                if(CakeTime::wasWithinLast($time.' minutes',$currentToken[0]['datetime'])){
-                    return $currentToken[0]['User_id'];
+            $time = 1;
+            if(CakeTime::isPast($currentToken[0]['token_hash']['datetime'])){
+                if(CakeTime::wasWithinLast($time.' minutes',$currentToken[0]['token_hash']['datetime'])){
+                    return $currentToken[0]['token_hash']['User_id'];
                 } else {
-                    return false;
+                    return 'expired';
                 }
             } else {
                 return null;

@@ -24,9 +24,11 @@ class UsersController extends AppController {
 			// old redirect if logged in
 			// $this->redirect(array('controller' => 'pages', 'action' => 'display', 'home'));
 		}
-		
+		//if no message has been sent please log in to continue
 		$this->layout='login_layout';
-		$this->Session->setFlash(__('Please Login to Continue'));
+        if(!$this->Session->check('Message.flash')){
+            $this->Session->setFlash(__('Please Login to Continue'));
+        }
 		// if we get the post information, try to authenticate
 		if ($this->request->is('post')) {
 			if ($this->Auth->login()) {
@@ -190,6 +192,8 @@ class UsersController extends AppController {
 
         $this->User->saveToken($id,$hash);
 
+
+        $this->User->id = $id;
         //Send email for reset password
         $Email = new CakeEmail('monashSMTP');
         //set template, find the email address of the memeber
@@ -265,9 +269,9 @@ class UsersController extends AppController {
         if($userID == null){
             $this->Session->setFlash('An error has occurred. Please try and reset password again');
             $this->redirect(array('controller'=>'Users','action'=>'login'));
-        } elseif($userID == false){
+        } elseif($userID == 'expired'){
             $this->Session->setFlash('Token has expired. Please reset password again');
-            $this->redirect(array('controller'=>'Users','action'=>'login'));
+            $this->redirect(array('controller'=>'Users','action'=>'forgot'));
         }
         //this set allows for view page to use the variable ex. user ID
         $this->set(compact('userID'));
@@ -275,13 +279,14 @@ class UsersController extends AppController {
 
         //continue
         if($this->request->is('post')){
-           /* if($this->User->save($this->request->data)){
+            if($this->User->save($this->request->data)){
+                //$this->User->delete_token($userID);
+
                 $this->Session->setFlash('Your password has been reset');
                 $this->redirect(array('controller'=>'Users','action'=>'login'));
             } else {
                 $this->Session->setFlash('Password could not be reset');
-            }*/
-            debug($this->request->data);
+            }
         }
     }
 
@@ -297,6 +302,10 @@ class UsersController extends AppController {
                 $this->reset_password($user['User']['id']);
             }
         }
+
+        /*public function delete_token(){
+
+        }*/
     }
 
 
