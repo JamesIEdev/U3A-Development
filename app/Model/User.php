@@ -153,12 +153,7 @@ class User extends AppModel {
         return $this->data[$this->name][$otherfield] === $this->data[$this->name][$fname]; 
     } 
 
-	/**
-	 * Before Save
-	 * @param array $options
-	 * @return boolean
-	 */
-	 public function beforeSave($options = array()) {
+	public function beforeSave($options = array()) {
 		// hash our password
 		if (isset($this->data[$this->alias]['password'])) {
 			$this->data[$this->alias]['password'] = AuthComponent::password($this->data[$this->alias]['password']);
@@ -172,12 +167,47 @@ class User extends AppModel {
 		// fallback to our parent
 		return parent::beforeSave($options);
 	}
-	
-	/**
- 	* belongsTo associations
- 	*
- 	* @var array
- 	*/
+
+    //Save token to the token_hash table
+    public function saveToken($id, $token){
+        $currentToken = $this->query("SELECT * FROM `token_hash` WHERE `User_id` = ".$id.";");
+
+        if(empty($currentToken)){
+            $this->query("
+                INSERT INTO `token_hash` (`User_id`, `hash`, `datetime`)
+                VALUES (".$id.", '".$token."', '".date('Y-m-d H:i:s')."');
+            ");
+        } else {
+            $this->query("
+                UPDATE `token_hash` SET `hash` = ".$token." WHERE `User_id` = ".$id.";
+                UPDATE `token_hash` SET `datetime` = ".date('Y-m-d H:i:s')." WHERE `User_id` = ".$id.";
+            ");
+        }
+    }
+
+    public function findTokenUserID($token){
+        $currentToken = $this->query("SELECT * FROM `token_hash` WHERE `hash` = ".$token.";");
+
+        if(empty($currentToken)){
+            return null;
+        } else {
+            //Check to see how old the hash is
+            //Time is set to 30 minutes
+
+            $time = 30;
+            if(CakeTime::isPast($currentToken[0]['datetime'])){
+                if(CakeTime::wasWithinLast($time.' minutes',$currentToken[0]['datetime'])){
+                    return $currentToken[0]['User_id'];
+                } else {
+                    return false;
+                }
+            } else {
+                return null;
+            }
+        }
+
+    }
+
 	public $belongsTo = array(
 		'Member' => array(
 			'className' => 'Member',

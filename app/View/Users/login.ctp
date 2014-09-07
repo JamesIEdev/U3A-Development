@@ -11,5 +11,10 @@
     </fieldset>
 
 <?php echo $this->Form->end(__('Login')); ?>
-<?php echo $this->Html->link(__('Not a member? Sign up now!'), array('controller' => 'members', 'action' => 'add')); ?>
+
+<?php echo $this->Html->link(__('Forgot your password?'), array('controller' => 'Users', 'action' => 'forgot')); ?>
+
+
+
+
 </div>
