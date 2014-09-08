@@ -195,7 +195,7 @@ class User extends AppModel {
             //Check to see how old the hash is
             //Time is set to 30 minutes
 
-            $time = 1;
+            $time = 30;
             if(CakeTime::isPast($currentToken[0]['token_hash']['datetime'])){
                 if(CakeTime::wasWithinLast($time.' minutes',$currentToken[0]['token_hash']['datetime'])){
                     return $currentToken[0]['token_hash']['User_id'];
