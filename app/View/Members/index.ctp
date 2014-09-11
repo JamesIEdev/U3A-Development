@@ -49,11 +49,7 @@
 						</tbody>
 					</table>
 
-					<div id="submitButtons">
-						<button><?php echo $this->Html->link(__('Edit'), 
-							array( 'controller' => '', 'action' => 'edit', $member['Member']['id'])); ?></a>
-						</button>
-					</div>
+				
 				</div>
 			</div>
 
