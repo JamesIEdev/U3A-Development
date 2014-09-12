@@ -33,7 +33,6 @@
     <li><?php echo $this->Html->link('MY PROFILE', array('controller' => 'members', 'action' => 'profile', $user['member_id'])); ?></li>
     <li><?php echo $this->Html->link('MEMBERS', array('controller' => 'members', 'action' => 'index')); ?></li>
     <li><?php echo $this->Html->link('COURSES', array('controller' => 'courses', 'action' => 'index')); ?></li>
-	<li><?php echo $this->Html->link('ENROL', array('controller' => 'courseenrolments', 'action' => 'index')); ?></li>
     <li><?php echo $this->Html->link('LOGOUT', array('controller' => 'users', 'action' => 'logout')); ?></li>
   </ul>
 
