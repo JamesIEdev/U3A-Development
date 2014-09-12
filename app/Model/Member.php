@@ -43,16 +43,23 @@ class Member extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'member_postcode' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				'message' => 'Please enter your postal address',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
+
+        'member_postcode' => array(
+            'numeric' => array(
+                'rule'    => array('numeric'),
+                'message' => 'Invalid postcode',
+            ),
+            'between' => array(
+                'rule'    =>  array('between', '4', '4'),
+                'message' => 'Invalid postcode format, must be 4 numbers'
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            )
+        ),
+
+
 		'member_email' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
