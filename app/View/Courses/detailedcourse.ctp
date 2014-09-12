@@ -16,7 +16,7 @@
 			<ul>
 				<li><a href="#tabs1">Details</a></li>
 				<li><a href="#tabs2">List Members</a></li>
-				<li><a href="#tabs3"><?php echo $this->Html->link(__('Courses'), array('action' => 'index')); ?></a></li>
+				<li><a href="#tabs3"><?php echo $this->Html->link(__('Return to Courses'), array('action' => 'index')); ?></a></li>
 				
 			</ul>
 
@@ -42,7 +42,16 @@
 						</tr> 
 						<tr> 
 							<td class="heading" width="20%">Currently Enrolled:</td> 
-							<td class="data"><?php echo h($course['Course']['current_enrolled']); ?>&nbsp;/&nbsp;<?php echo h($course['Course']['max_enrol_limit']); ?></td> 
+							<td class="data">
+								<?php $num = 0;
+									foreach ($course['Courseenrolment'] as $member): 
+										if ($member['course_id'] == $course['Course']['id']) {
+											$num = $num + 1;
+										}
+									endforeach;
+								?>
+								<?php echo $num; ?>&nbsp;/&nbsp;<?php echo h($course['Course']['max_enrol_limit']); ?>
+							</td>
 						</tr> 
 						<tr> 
 							<td class="heading" width="20%">Difficulty:</td> 
@@ -54,6 +63,10 @@
 						</tr>
 					</table>
 				</div>
+
+
+					
+
 
 			<div id="submitButtons">
 				<button>

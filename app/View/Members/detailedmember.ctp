@@ -16,7 +16,7 @@
 			<ul>
 				<li><a href="#tabs1">Details</a></li>
 				<li><a href="#tabs2">Enrollments</a></li>
-				<li><a href="#tabs3"><?php echo $this->Html->link(__('Members'), array('action' => 'index')); ?></a></li>
+				<li><a href="#tabs3"><?php echo $this->Html->link(__('Return to Members'), array('action' => 'index')); ?></a></li>
 				
 			</ul>
 
@@ -122,7 +122,7 @@
 								array('controller' => 'Courses', 'action' => 'detailedcourse', $course['id'])); ?>
 						</td>
 						<td><?php echo $course['course_name']; ?></td>
-						<td><?php echo h($course['current_enrolled']); ?>&nbsp;/&nbsp;<?php echo h($course['max_enrol_limit']); ?></td>
+						<td><?php echo h($course['max_enrol_limit']); ?></td>
 						<td><?php echo $course['difficulty']; ?></td>
 						<td><?php echo $course['prerequisites']; ?></td>
 					</tr>

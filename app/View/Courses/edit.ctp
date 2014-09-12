@@ -1,23 +1,51 @@
 <div class="courses form">
-<?php echo $this->Form->create('Course'); ?>
-	<fieldset>
-		<legend><?php echo __('Edit Course'); ?></legend>
-	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('course_code', array('label' => 'Course Code: '));
-		echo $this->Form->input('course_name', array('label' => 'Course Name: '));
-		echo $this->Form->input('description', array('label' => 'Description: '));
-		echo $this->Form->input('max_enrol_limit', array('label' => 'Max Enrol Limit: '));
-		echo $this->Form->input('difficulty', array('label' => 'Difficulty: '));
-		echo $this->Form->input('prerequisites', array('label' => 'Pre-requisites: '));
+	<?php 
+		echo $this->Form->create('Course', array('enctype' => 'multipart/form-data')); 
+		echo $this->Form->input('id'); 
 	?>
-	</fieldset>
-	<p></p>
-	<?php echo $this->Form->end(__('Confirm Edit')); ?>
-<div class="actions">
-	<h2><?php echo __('Actions'); ?></h2>
-	<ul>
-		<li><?php echo $this->Html->link(__('Back'), array('action' => 'detailedcourse/', $id)); ?></li>
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Course.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Course.id'))); ?></li>
-	</ul>
+	
+	<h2><?php echo __('Edit Course'); ?></h2>
+
+	<table cellpadding='0' cellspacing='1' width='100%'>
+		<tr> 
+			<td class="heading">Course Code: </td> 
+			<td class="data"><?php echo $this->Form->input('course_code', array('label' =>'','size'=>'30'));?></td> 
+		</tr> 
+		<tr> 
+			<td class="heading">Course Name: </td> 
+			<td class="data"><?php echo $this->Form->input('course_name', array('label' =>'','size'=>'30'));?></td> 
+		</tr> 
+		<tr> 
+			<td class="heading">Description: </td> 
+			<td class="data"><?php echo $this->Form->input('description', array('label' =>'','size'=>'30'));?></td> 
+		</tr>
+		<tr>
+			<td class="heading" width="20%"></td> 
+			<td class="data"><br></td> 
+		</tr> 
+		<tr> 
+			<td class="heading">Max Enrol Limit: </td> 
+			<td class="data"><?php echo $this->Form->input('max_enrol_limit', array('label' =>'','size'=>'30'));?></td> 
+		</tr> 
+		<tr> 
+			<td class="heading">Difficulty: </td> 
+			<td class="data"><?php echo $this->Form->input('difficulty', array('label' =>'','size'=>'30'));?></td> 
+		</tr>
+		<tr>
+			<td class="heading" width="20%"></td> 
+			<td class="data"><br></td> 
+		</tr>  
+		<tr> 
+			<td class="heading">Pre-requisites: </td> 
+			<td class="data"><?php echo $this->Form->input('prerequisites', array('label' =>'','size'=>'30'));?></td> 
+		</tr> 
+	</table>
+
+	<div id="submitButtons">
+		<button type="Submit">Confirm Edit<?php echo $this->Form->end(); ?></button>
+		<button><?php echo $this->Html->link(__('Back'), array('action' => 'detailedcourse/'. $course['Course']['id'])); ?></button>
+		
+	</div>
 </div>
+
+

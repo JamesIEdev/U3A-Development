@@ -119,6 +119,7 @@ class MembersController extends AppController {
 		if (!$this->Member->exists($id)) {
 			throw new NotFoundException(__('Invalid member'));
 		}
+		$getuser = $this->Session->read('Auth.User');
 		$options = array('conditions' => array('Member.' . $this->Member->primaryKey => $id));
 		$this->set('member', $this->Member->find('first', $options));
 	}

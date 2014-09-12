@@ -15,6 +15,7 @@ class CoursesController extends AppController {
 	public function index() {
 		$this->Course->recursive = 0;
 		$this->set('courses', $this->paginate());
+		
 	}
 
 /**
@@ -86,8 +87,8 @@ class CoursesController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Course->save($this->request->data)) {
-				$this->Session->setFlash(__('The course has been saved'));
-				$this->redirect(array('action' => 'index'));
+				$this->Session->setFlash(__('The course has been updated.'));
+				$this->redirect(array('action' => 'detailedcourse/'. $id));
 			} else {
 				$this->Session->setFlash(__('The course could not be saved. Please, try again.'));
 			}
@@ -95,6 +96,7 @@ class CoursesController extends AppController {
 			$options = array('conditions' => array('Course.' . $this->Course->primaryKey => $id));
 			$this->request->data = $this->Course->find('first', $options);
 		}
+		$this->set('course', $this->Course->find('first', $options));
 	}
 
 /**
