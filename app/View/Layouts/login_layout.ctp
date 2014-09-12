@@ -34,7 +34,7 @@
 
 <div id="footer-wrapper">
         <div id="footer" class="container">
-            <p>Review Version of <b>Build 3</b> | Team 19 - Monash Industrial Experience</a>.</p>
+            <p>Review Version of <b>Build 4</b> | Team 19 - Monash Industrial Experience</a>.</p>
         </div>
 </div>
 

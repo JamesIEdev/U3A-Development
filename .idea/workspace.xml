@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4bad2cbc-24a3-4180-b3bb-77018ebc6e8b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/View/Members/index.ctp" afterPath="$PROJECT_DIR$/app/View/Members/index.ctp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/View/Members/detailedmember.ctp" afterPath="$PROJECT_DIR$/app/View/Members/detailedmember.ctp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/View/Layouts/login_layout.ctp" afterPath="$PROJECT_DIR$/app/View/Layouts/login_layout.ctp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="u3a.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,10 +36,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="detailedmember.ctp" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="detailedmember.ctp" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/View/Members/detailedmember.ctp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="93" column="59" selection-start="2819" selection-end="2858" vertical-scroll-proportion="0.0" vertical-offset="1395" max-vertical-offset="2130">
+            <state line="104" column="23" selection-start="3497" selection-end="3497" vertical-scroll-proportion="0.6606852" vertical-offset="1155" max-vertical-offset="2130">
               <folding />
             </state>
           </provider>
@@ -64,7 +66,7 @@
       <file leaf-file-name="login_layout.ctp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/View/Layouts/login_layout.ctp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="75" selection-start="259" selection-end="259" vertical-scroll-proportion="-3.75" vertical-offset="15" max-vertical-offset="735">
+            <state line="26" column="6" selection-start="799" selection-end="799" vertical-scroll-proportion="-13.75" vertical-offset="60" max-vertical-offset="735">
               <folding />
             </state>
           </provider>
@@ -73,16 +75,16 @@
       <file leaf-file-name="profile.ctp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/View/Members/profile.ctp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1830">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1830">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.ctp" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.ctp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/View/Members/index.ctp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="16" selection-start="1555" selection-end="1555" vertical-scroll-proportion="0.30664396" vertical-offset="585" max-vertical-offset="2880">
+            <state line="51" column="16" selection-start="1555" selection-end="1555" vertical-scroll-proportion="15.0" vertical-offset="1125" max-vertical-offset="2880">
               <folding />
             </state>
           </provider>
@@ -129,6 +131,8 @@
         <option value="$PROJECT_DIR$/app/View/Emails/html/forgotten_password.ctp" />
         <option value="$PROJECT_DIR$/app/View/Layouts/Emails/html/default.ctp" />
         <option value="$PROJECT_DIR$/app/View/Members/index.ctp" />
+        <option value="$PROJECT_DIR$/app/View/Layouts/login_layout.ctp" />
+        <option value="$PROJECT_DIR$/app/View/Members/detailedmember.ctp" />
       </list>
     </option>
   </component>
@@ -518,7 +522,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27622098" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28022417" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -812,13 +816,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/View/Members/detailedmember.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="59" selection-start="2819" selection-end="2858" vertical-scroll-proportion="0.0" vertical-offset="1395" max-vertical-offset="2130">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/View/Layouts/Emails/html/default.ctp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="0" selection-start="486" selection-end="486" vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="480">
@@ -840,13 +837,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/View/Layouts/login_layout.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="75" selection-start="259" selection-end="259" vertical-scroll-proportion="-3.75" vertical-offset="15" max-vertical-offset="735">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/View/Members/profile.ctp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1830">
@@ -856,7 +846,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/View/Members/index.ctp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="16" selection-start="1555" selection-end="1555" vertical-scroll-proportion="0.30664396" vertical-offset="585" max-vertical-offset="2880">
+        <state line="51" column="16" selection-start="1555" selection-end="1555" vertical-scroll-proportion="15.0" vertical-offset="1125" max-vertical-offset="2880">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/View/Layouts/login_layout.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="6" selection-start="799" selection-end="799" vertical-scroll-proportion="-13.75" vertical-offset="60" max-vertical-offset="735">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/View/Members/detailedmember.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="104" column="23" selection-start="3497" selection-end="3497" vertical-scroll-proportion="0.6606852" vertical-offset="1155" max-vertical-offset="2130">
           <folding />
         </state>
       </provider>
