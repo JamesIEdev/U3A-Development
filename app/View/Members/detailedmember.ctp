@@ -82,12 +82,12 @@
 					}; 
 			?>
 
-			<button>
- 				<?php         
+			<!--<button>
+ 				<?php /*
        				echo $this->Form->postLink(__('Reset Password'), array('controller'=>'users','action'=>'reset_password',$member['User'][0]['id']), null, 
         			'Are you sure you want to reset the password for '.$member['Member']['member_gname'].' '.$member['Member']['member_fname'].'?');
-  				?>
-			</button>
+  				*/?>
+			</button>-->
 			
 			<button type="submit"><?php
 				echo $this->Form->postLink(__('Delete Member'), array('action' => 'delete', $member['Member']['id']), 
