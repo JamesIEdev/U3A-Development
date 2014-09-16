@@ -70,27 +70,27 @@ class Member extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+
 		'member_phone' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
-				'message' => 'Please enter your phone number',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
+				'message' => 'Please enter your phone number, must be 8 digits',
+            ),
+            'between' => array(
+            'rule' => array('between', '8','8'),
+            )
 		),
+
 		'member_mobile' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
-				'message' => 'Please enter your mobile number',
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
+				'message' => 'Please enter your mobile number, must be 10 digits',
+            ),
+                'between' => array(
+                    'rule' => array('between', '10','10'),
+                )
 		),
+
 		'active' => array(
 			'boolean' => array(
 				'rule' => array('boolean'),
